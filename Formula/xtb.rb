@@ -1,16 +1,9 @@
 class Xtb < Formula
   desc "Semiemprical extended tight-binding program package"
   homepage "https://xtb-docs.readthedocs.io"
-  url "https://github.com/grimme-lab/xtb/releases/download/v6.6.1/xtb-6.6.1-source.tar.xz"
-  sha256 "de0b8d4515f3c878456d9f0f83d4922a55f2b4cbb9c56fe68df559ecd284ff86"
+  url "https://github.com/xiaohang007/xtb/archive/refs/tags/v6-topo.tar.gz"
+  sha256 "5dbd8b892eb0a9472b1e745c4bcfdd26f7548e39f32467a5e4f0d4113f923a38"
   license "LGPL-3.0-or-later"
-
-  bottle do
-    root_url "https://github.com/grimme-lab/homebrew-qc/releases/download/xtb-6.6.1"
-    sha256 cellar: :any, monterey:     "765a780985e332058a0288a6f22623ba06d07115bce7dc8af29037bcb5e92e1a"
-    sha256 cellar: :any, big_sur:      "df658b218a4dbb132f190447638e3fc15f7d9c001eb576e80c13ea46e628274e"
-    sha256               x86_64_linux: "d07351e809391edca09133abb2d34ff3cf866b3b00d34ed5dc353dc04dc1bdb3"
-  end
 
   depends_on "asciidoctor" => :build
   depends_on "meson" => :build
