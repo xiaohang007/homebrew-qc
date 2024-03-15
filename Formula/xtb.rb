@@ -9,9 +9,7 @@ class Xtb < Formula
   depends_on "meson" => :build
   depends_on "ninja" => :build
   depends_on "pkg-config" => :build
-  depends_on "test-drive" => :build
   depends_on "gcc"
-  depends_on "mctc-lib"
   depends_on "openblas"
   fails_with gcc: "4"
   fails_with gcc: "5"
@@ -22,10 +20,9 @@ class Xtb < Formula
   def install
     ENV.fortran
     meson_args = std_meson_args
-    meson_args << "-Dlapack=openblas"
-    meson_args << "-Dtblite=disabled"
+    meson_args << "-Dla_backend=openblas"
     meson_args << "-Dbuild_name=homebrew"
-    meson_args << "-Dxtb:fortran_link_args=-Wl,-stack_size,0x1000000" if OS.mac?
+    meson_args << "-Dfortran_link_args=-Wl,-stack_size,0x1000000" if OS.mac?
     system "meson", "setup", "_build", *meson_args
     system "meson", "compile", "-C", "_build"
     system "meson", "test", "-C", "_build", "--no-rebuild", "--num-processes", "1"
